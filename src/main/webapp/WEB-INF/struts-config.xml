@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+        <form-beans>
+                <form-bean name="News" type="kz.epam.news.form.NewsForm"/>
+        </form-beans>
+
+        <action-mappings>
+                <action path="/add" validate="true" input="addNews" name="News" type="kz.epam.news.action.SaveNews">
+                        <forward name="success" path="/main.do" redirect="true"/>
+                </action>
+
+                <action path="/edit" type="kz.epam.news.action.EditNews">
+                        <forward name="success" path="updateNews"/>
+                </action>
+
+                <action path="/main" type="kz.epam.news.action.ViewNewsList">
+                        <forward name="success" path="newsList"/>
+                </action>
+
+                <action path="/view" type="kz.epam.news.action.ViewNews">
+                        <forward name="success" path="viewNews"/>
+                </action>
+
+                <action path="/delete" name="News" validate="false" type="kz.epam.news.action.DeleteNews">
+                        <forward name="success" path="/main.do" redirect="true"/>
+                </action>
+        </action-mappings>
+
+        <controller>
+                <set-property property="processorClass"
+                              value="org.springframework.web.struts.DelegatingTilesRequestProcessor"/>
+        </controller>
+
+        <message-resources parameter="MessageResources"/>
+
+        <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+                <set-property property="contextConfigLocation" value="/WEB-INF/action-servlet.xml"/>
+        </plug-in>
+
+        <plug-in className="org.apache.struts.tiles.TilesPlugin">
+                <set-property value="/WEB-INF/tiles-defs.xml" property="definitions-config"/>
+        </plug-in>
+
+        <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+                <set-property value="/org/apache/struts/validator/validator-rules.xml,/WEB-INF/validation.xml"
+                              property="pathnames"/>
+        </plug-in>
+
+</struts-config>

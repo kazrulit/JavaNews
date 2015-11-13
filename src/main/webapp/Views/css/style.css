@@ -1,0 +1,80 @@
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0px;
+    border:1px solid #000;
+}
+
+.clears {
+    clear: both;
+}
+
+.header-top .title {
+    font: bold 20px Arial, Helvetica, sans-serif;
+    float: left;
+    color: #252525;
+    padding: 20px 10px;
+}
+
+.header-top .lang-container {
+    float: right;
+    margin-top: 30px;
+    margin-right: 10px;
+}
+
+.main-container .sidebar {
+    float: left;
+    padding: 10px;
+    background: #ebebeb;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 200px;
+}
+
+.main-container .sidebar .title {
+    font: 16px Arial, Helvetica, sans-serif;
+    padding: 10px;
+    background: #252525;
+    color: #FFF;
+    text-align: center;
+}
+
+.main-container .sidebar .links {
+    padding: 10px;
+    background: #FFF;
+}
+
+.main-container .body-wrap {
+    float: right;
+    width: 910px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #eeeeee;
+}
+
+.main-container .body-wrap .news-block {
+    padding: 20px 0px;
+}
+
+.main-container .body-wrap .news-block a {
+    text-decoration: none;
+    color: #252525;
+}
+
+.main-container .body-wrap .news-block .left {
+    float: left;
+    width: 700px;
+}
+
+.main-container .body-wrap .news-block .right {
+    float: right;
+}
+
+.footer .copy {
+    font: 12px Arial, Helvetica, sans-serif;
+    text-align: center;
+}
