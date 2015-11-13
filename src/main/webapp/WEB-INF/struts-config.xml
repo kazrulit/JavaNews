@@ -6,12 +6,16 @@
 
 <struts-config>
         <form-beans>
-                <form-bean name="News" type="kz.epam.news.form.NewsForm"/>
+                <form-bean name="NewsForm" type="kz.epam.news.form.NewsForm"/>
         </form-beans>
 
         <action-mappings>
-                <action path="/add" validate="true" input="addNews" name="News" type="kz.epam.news.action.SaveNews">
+                <action path="/add" validate="true" input="addNews" name="NewsForm" type="kz.epam.news.action.SaveNews">
                         <forward name="success" path="/main.do" redirect="true"/>
+                </action>
+
+                <action path="/addPage" type="kz.epam.news.action.FormsDispatcher" name="NewsForm" validate="false">
+                        <forward name="success" path="addNews"/>
                 </action>
 
                 <action path="/edit" type="kz.epam.news.action.EditNews">
@@ -26,7 +30,11 @@
                         <forward name="success" path="viewNews"/>
                 </action>
 
-                <action path="/delete" name="News" validate="false" type="kz.epam.news.action.DeleteNews">
+                <action path="/delete" name="NewsForm" validate="false" type="kz.epam.news.action.DeleteNews">
+                        <forward name="success" path="/main.do" redirect="true"/>
+                </action>
+
+                <action path="/locale" type="kz.epam.news.action.Locale" parameter="lang">
                         <forward name="success" path="/main.do" redirect="true"/>
                 </action>
         </action-mappings>

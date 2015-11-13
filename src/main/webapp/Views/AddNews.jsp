@@ -2,16 +2,18 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <div class="form-container">
-    <html:errors/>
-    <html:javascript formName="News"/>
+    <div class="errors">
+        <html:errors/>
+    </div>
     <html:form action="/add">
         <html:hidden property="id"/>
-        <p>Title</p>
-        <div><html:text property="title"/></div>
-        <p>Brief</p>
+        <p><bean:message key="input.title"/></p>
+        <div><html:text name="NewsForm" property="title"/></div>
+
+        <p><bean:message key="input.brief"/></p>
         <div><html:textarea property="brief"/></div>
-        <p>Content</p>
+        <p><bean:message key="input.content"/></p>
         <div><html:textarea property="content"/></div>
-        <html:submit value="Save"/>
+        <input type="submit" value="<bean:message key='news.save'/>"/>
     </html:form>
 </div>

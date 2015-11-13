@@ -1,5 +1,6 @@
 package kz.epam.news.action;
 
+import kz.epam.news.configs.Configs;
 import kz.epam.news.dao.NewsDAO;
 import kz.epam.news.entity.News;
 import kz.epam.news.form.NewsForm;
@@ -21,15 +22,15 @@ public class DeleteNews extends ActionSupport {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         WebApplicationContext context = getWebApplicationContext();
-        NewsDAO newsDAO = (NewsDAO) context.getBean("NewsDAO");
+        NewsDAO newsDAO = (NewsDAO) context.getBean(Configs.NEWSDAO);
 
-        if(request.getParameter("id") != null) {
-            String[] ids = request.getParameterValues("id");
+        if(request.getParameter(Configs.ID) != null) {
+            String[] ids = request.getParameterValues(Configs.ID);
             for (String id : ids) {
                 newsDAO.remove(Integer.valueOf(id));
             }
         }
 
-        return mapping.findForward("success");
+        return mapping.findForward(Configs.SUCCESS);
     }
 }

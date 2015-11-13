@@ -15,15 +15,14 @@
                 <div class="right">
                     <p class="date"><bean:write name="newsListId" property="publishDate"/></p>
                     <div class="extras">
-                        <a href="/view.do?id=<bean:write name="newsListId" property="id"/>">View</a>
-                        <a href="/edit.do?id=<bean:write name="newsListId" property="id"/>">Edit</a>
-                        <html:checkbox property="id" value="${newsListId.id}"/>
+                        <a href="/view.do?id=<bean:write name="newsListId" property="id"/>"><bean:message key="news.view"/></a>
+                        <a href="/edit.do?id=<bean:write name="newsListId" property="id"/>"><bean:message key="news.edit"/></a>
+                        <input type="checkbox" name="id" value="${newsListId.id}"/>
                     </div>
                 </div>
                 <div class="clears"></div>
             </a>
         </div>
     </logic:iterate>
-
-    <html:submit value="Delete" styleId="delete"/>
+    <input type="submit" value="<bean:message key='news.delete'/>" onclick="return (confirm('<bean:message key='news.ondelete'/>'))"/>
 </html:form>

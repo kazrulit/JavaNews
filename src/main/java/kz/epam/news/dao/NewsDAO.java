@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author Khamid
  */
+//TODO create hibernate creteria
 public class NewsDAO extends HibernateDaoSupport implements NewsDAOI {
 
     @Override
@@ -42,7 +43,7 @@ public class NewsDAO extends HibernateDaoSupport implements NewsDAOI {
     @Override
     public List<News> getList() {
         Session session = getSessionFactory().openSession();
-        List<News> newsList = session.createQuery("from News").list();
+        List<News> newsList = session.createCriteria(News.class).list();
         session.close();
         return newsList;
     }

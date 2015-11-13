@@ -4,12 +4,12 @@
 <div class="form-container">
   <html:form action="/add">
     <html:hidden property="id" value="${news.id}"/>
-    <p>Title</p>
+    <p><bean:message key="input.title"/></p>
     <div><html:text property="title" value="${news.title}"/></div>
-    <p>Brief</p>
+    <p><bean:message key="input.title"/></p>
     <div><html:textarea property="brief" value="${news.brief}"/></div>
-    <p>Content</p>
+    <p><bean:message key="input.content"/></p>
     <div><html:textarea property="content" value="${news.content}"/></div>
-    <html:submit value="Save"/>
+    <input type="submit" value="<bean:message key='news.save'/>"/>
   </html:form>
 </div>

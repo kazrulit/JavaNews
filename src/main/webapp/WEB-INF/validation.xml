@@ -7,12 +7,20 @@
 
 <form-validation>
         <formset>
-                <form name="News">
+                <form name="NewsForm">
                         <field property="title" depends="required">
                                 <msg key="errors.required" name="required"/>
+                                <arg key="input.title" position="0" name="required"/>
                         </field>
-                        <field property="brief" depends="required"></field>
-                        <field property="content" depends="required"></field>
+                        <field property="brief" depends="required">
+                                <msg key="errors.required" name="required"/>
+                                <arg key="input.brief" position="0" name="required"/>
+
+                        </field>
+                        <field property="content" depends="required">
+                                <msg key="errors.required" name="required"/>
+                                <arg key="input.content" position="0" name="required"/>
+                        </field>
                 </form>
         </formset>
 </form-validation>

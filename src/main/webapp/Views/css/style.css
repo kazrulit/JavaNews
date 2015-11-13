@@ -72,9 +72,14 @@ html, body {
 
 .main-container .body-wrap .news-block .right {
     float: right;
+    width: 180px;
 }
 
 .footer .copy {
     font: 12px Arial, Helvetica, sans-serif;
     text-align: center;
+}
+
+.errors {
+    color: #ff1510;
 }

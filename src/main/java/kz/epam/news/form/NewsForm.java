@@ -4,10 +4,12 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 public class NewsForm extends ValidatorForm{
     private int id;
     private String title;
+    //private Date publishDate;
     private String brief;
     private String content;
 
@@ -26,6 +28,14 @@ public class NewsForm extends ValidatorForm{
     public void setTitle(String title) {
         this.title = title;
     }
+
+   // public Date getPublishDate() {
+       // return publishDate;
+    //}
+
+   // public void setPublishDate(Date publishDate) {
+    //    this.publishDate = publishDate;
+    //}
 
     public String getBrief() {
         return brief;

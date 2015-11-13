@@ -1,5 +1,6 @@
 package kz.epam.news.action;
 
+import kz.epam.news.configs.Configs;
 import kz.epam.news.dao.NewsDAO;
 import kz.epam.news.entity.News;
 import kz.epam.news.form.NewsForm;
@@ -21,7 +22,7 @@ public class SaveNews extends ActionSupport {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         WebApplicationContext context = getWebApplicationContext();
-        NewsDAO newsDAO = (NewsDAO) context.getBean("NewsDAO");
+        NewsDAO newsDAO = (NewsDAO) context.getBean(Configs.NEWSDAO);
 
         NewsForm newsForm = (NewsForm) form;
         News news = new News();
@@ -31,6 +32,6 @@ public class SaveNews extends ActionSupport {
         news.setPublishDate(new Date());
         newsDAO.save(news);
 
-        return mapping.findForward("success");
+        return mapping.findForward(Configs.SUCCESS);
     }
 }
