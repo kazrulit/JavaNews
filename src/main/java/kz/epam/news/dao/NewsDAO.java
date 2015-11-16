@@ -1,5 +1,6 @@
 package kz.epam.news.dao;
 
+import kz.epam.news.configs.Configs;
 import kz.epam.news.entity.News;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projection;
@@ -17,7 +18,6 @@ public class NewsDAO extends HibernateDaoSupport implements NewsDAOI {
     private Session session;
 
     public NewsDAO() {
-        //session = getSessionFactory().
     }
 
     @Override
@@ -44,7 +44,7 @@ public class NewsDAO extends HibernateDaoSupport implements NewsDAOI {
     public News fetchById(int id) {
         Session session = getSessionFactory().openSession();
         News news = (News) session.createCriteria(News.class)
-                .add(Restrictions.eq("id", id))
+                .add(Restrictions.eq(Configs.ID, id))
                 .uniqueResult();
         session.close();
         return news;
