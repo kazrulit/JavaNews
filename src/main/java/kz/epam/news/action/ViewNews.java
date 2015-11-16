@@ -8,6 +8,8 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.struts.ActionSupport;
 
@@ -18,6 +20,7 @@ import java.util.Date;
 /**
  * Created by admin on 11/12/2015.
  */
+
 public class ViewNews extends ActionSupport {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -26,7 +29,7 @@ public class ViewNews extends ActionSupport {
 
         if(request.getParameter(Configs.ID) != null) {
             News news = newsDAO.fetchById(Integer.valueOf(request.getParameter(Configs.ID)));
-            request.setAttribute("news", news);
+            request.setAttribute(Configs.NEWS, news);
         }
 
         return mapping.findForward(Configs.SUCCESS);

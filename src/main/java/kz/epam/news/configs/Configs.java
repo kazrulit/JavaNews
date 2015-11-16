@@ -7,4 +7,5 @@ public abstract class Configs {
     public static final String SUCCESS = "success";
     public static final String ID = "id";
     public static final String NEWSDAO = "NewsDAO";
+    public static final String NEWS = "news";
 }

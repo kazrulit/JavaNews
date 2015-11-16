@@ -83,3 +83,10 @@ html, body {
 .errors {
     color: #ff1510;
 }
+
+
+.pagination ul li {
+    list-style: none;
+    float: left;
+    padding: 10px;
+}

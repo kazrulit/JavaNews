@@ -26,8 +26,10 @@ public class EditNews extends ActionSupport {
 
         if(request.getParameter(Configs.ID) != null) {
             News news = newsDAO.fetchById(Integer.valueOf(request.getParameter(Configs.ID)));
-            request.setAttribute("news", news);
+            request.setAttribute(Configs.NEWS, news);
         }
+
+
 
         return mapping.findForward(Configs.SUCCESS);
     }

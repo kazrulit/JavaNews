@@ -1,6 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<fmt:setLocale value='${pageContext.session.getAttribute("org.apache.struts.action.LOCALE")}'/>
 <div class="view-wrap">
   <div class="view-block">
     <p class="title"><bean:message key="input.title"/></p>
@@ -10,7 +14,7 @@
 
   <div class="view-block">
     <p class="title"><bean:message key="input.date"/></p>
-    <p class="text">${news.publishDate}</p>
+    <p class="text"><fmt:formatDate type="date" value="${news.publishDate}"/></p>
     <div class="clears"></div>
   </div>
 

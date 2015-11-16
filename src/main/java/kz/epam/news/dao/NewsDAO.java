@@ -2,15 +2,23 @@ package kz.epam.news.dao;
 
 import kz.epam.news.entity.News;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import javax.enterprise.inject.New;
 import java.util.List;
 
 /**
  * @author Khamid
  */
-//TODO create hibernate creteria
 public class NewsDAO extends HibernateDaoSupport implements NewsDAOI {
+    private Session session;
+
+    public NewsDAO() {
+        //session = getSessionFactory().
+    }
 
     @Override
     public void save(News news) {
@@ -35,7 +43,9 @@ public class NewsDAO extends HibernateDaoSupport implements NewsDAOI {
     @Override
     public News fetchById(int id) {
         Session session = getSessionFactory().openSession();
-        News news = (News) session.get(News.class, id);
+        News news = (News) session.createCriteria(News.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
         session.close();
         return news;
     }
@@ -46,5 +56,26 @@ public class NewsDAO extends HibernateDaoSupport implements NewsDAOI {
         List<News> newsList = session.createCriteria(News.class).list();
         session.close();
         return newsList;
+    }
+
+    public List<News> getList(int firstRow, int maxRows) {
+        Session session = getSessionFactory().openSession();
+
+        List<News> newsList = session.createCriteria(News.class)
+                .setFirstResult(firstRow)
+                .setMaxResults(maxRows)
+                .list();
+
+        session.close();
+        return newsList;
+    }
+
+    public Long getMaxResult() {
+        Session session = getSessionFactory().openSession();
+        Long resultLong = (Long) session.createCriteria(News.class)
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
+        session.close();
+        return resultLong;
     }
 }

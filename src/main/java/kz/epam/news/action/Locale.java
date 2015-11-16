@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Locale extends DispatchActionSupport {
 
     public ActionForward en(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        System.out.println(java.util.Locale.ENGLISH);
         request.getSession().setAttribute(Globals.LOCALE_KEY, java.util.Locale.ENGLISH);
         return mapping.findForward(Configs.SUCCESS);
     }
