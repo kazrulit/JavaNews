@@ -15,8 +15,6 @@ import java.util.List;
  * @author Khamid
  */
 public class NewsDAO extends HibernateDaoSupport implements NewsDAOI {
-    private Session session;
-
     public NewsDAO() {
     }
 
